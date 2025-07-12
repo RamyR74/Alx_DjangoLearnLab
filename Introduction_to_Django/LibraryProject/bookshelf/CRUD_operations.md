@@ -8,9 +8,12 @@
 ## Retrieve
 
 ```python
-book = Book.objects.get(title="1984")
-print(book.title, book.author, book.publication_year)
+>>> from bookshelf.models import Book
+>>> book = Book.objects.get(title="1984")
+>>> print(book.title, book.author, book.publication_year)
 # 1984 George Orwell 1949
+
+
 
 ## Update
 
@@ -23,9 +26,13 @@ book.title
 ## Delete
 
 ```python
-book.delete()
-Book.objects.all()
+>>> from bookshelf.models import Book
+>>> book = Book.objects.get(title="Nineteen Eighty-Four")
+>>> book.delete()
+# (1, {'bookshelf.Book': 1})
+>>> Book.objects.all()
 # <QuerySet []>
+
 
 
 
