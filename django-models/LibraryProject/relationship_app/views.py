@@ -15,7 +15,9 @@ class LibraryDetailView(DetailView):
     context_object_name = 'library'
 
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 from django.shortcuts import render, redirect
+
 
 def register(request):
     if request.method == 'POST':
