@@ -1,6 +1,4 @@
 from django.db import models
-from accounts.models import CustomUser
-
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
@@ -35,3 +33,12 @@ class CustomUserManager(BaseUserManager):
 
         return self.create_user(username, email, password, **extra_fields)
 
+class CustomUser(AbstractUser):
+    email = models.EmailField(_('email address'), unique=True)
+    date_of_birth = models.DateField(null=True, blank=True)
+    profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.username
